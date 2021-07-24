@@ -1,3 +1,5 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 module.exports = {
     module: {
         // loaders: the goal of the loader is to tell webpack
@@ -16,5 +18,10 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './public/index.html',
+        }), 
+    ]
 };

@@ -1,21 +1,25 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { merge } = require('webpack-merge');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const commonConfig = require('./webpack.common');
+const packageJson = require('../package.json')
 
-module.exports = {
-  mode: 'development',
-  devServer: {
-    port: 8080,
-  },
-  plugins: [
-    new ModuleFederationPlugin({
-      name: 'container',
-      remotes: {
-        products: 'products@http://localhost:8081/remoteEntry.js',
-        cart: 'cart@http://localhost:8082/remoteEntry.js',
-      },
-    }),
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-    }),
-  ],
+const domain = process.env.PRODUCTION_DOMAIN;
+// sharing the container package.json dependencies to pass directly to shared modules
+
+const prodConfig = {
+    mode: 'production',
+    output: {
+      filename: '[name].[contenthash].js'
+    },
+    plugins: [
+        new ModuleFederationPlugin({
+            name: 'container', // not require, but following convention
+            remotes: {
+                marketing: `marketing@${domain}/marketing/remoteEnr` // marketing before @, matches the name of config.dev of marketing app
+            },
+            shared: packageJson.dependencies
+        }),
+    ]
 };
+
+module.exports = merge(commonConfig, prodConfig);

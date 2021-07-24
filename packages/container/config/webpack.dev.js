@@ -2,7 +2,6 @@
 // config that we just wrote out inside that common file and merge
 // it together with a config that we're about to write inside this dev file
 const { merge } = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const commonConfig = require('./webpack.common');
 
@@ -25,10 +24,7 @@ const devConfig = {
                 marketing: 'marketing@http://localhost:8081/remoteEntry.js' // marketing before @, matches the name of config.dev of marketing app
             },
             shared: packageJson.dependencies
-        }),
-        new HtmlWebpackPlugin({
-            template: './public/index.html',
-        }), 
+        })
     ]
 };
 
