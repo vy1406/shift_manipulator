@@ -5,11 +5,13 @@ const packageJson = require('../package.json')
 
 const domain = process.env.PRODUCTION_DOMAIN;
 // sharing the container package.json dependencies to pass directly to shared modules
+const awsPrefix = '/container/latest/';
 
 const prodConfig = {
     mode: 'production',
     output: {
-      filename: '[name].[contenthash].js'
+      filename: '[name].[contenthash].js',
+      publicPath: `${awsPrefix}`
     },
     plugins: [
         new ModuleFederationPlugin({
