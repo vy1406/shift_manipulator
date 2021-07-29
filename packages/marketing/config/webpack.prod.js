@@ -3,10 +3,14 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 const commonConfig = require('./webpack.common');
 const packageJson = require('../package.json')
 
+
+const awsPrefix = '/marketing/latest/';
+
 const prodConfig = {
     mode: 'production',
     output: {
-      filename: '[name].[contenthash].js'
+      filename: '[name].[contenthash].js',
+      publicPath: `${awsPrefix}`
     },
     plugins: [
         new ModuleFederationPlugin({
