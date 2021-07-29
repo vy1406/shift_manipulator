@@ -4,7 +4,6 @@ const commonConfig = require('./webpack.common');
 const packageJson = require('../package.json')
 
 const domain = process.env.PRODUCTION_DOMAIN;
-console.log(domain)
 // sharing the container package.json dependencies to pass directly to shared modules
 
 const prodConfig = {
