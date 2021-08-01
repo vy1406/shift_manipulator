@@ -8,8 +8,7 @@ const commonConfig = require('./webpack.common');
 
 const packageJson = require('../package.json')
 
-const port = '8081';
-
+const port = '8082'
 const devConfig = {
     mode: 'development',
     output: {
@@ -17,16 +16,17 @@ const devConfig = {
     },
     devServer: {
         port: port,
-        historyApiFallback: {
-            index: 'index.html'
-        }
+        // historyApiFallback: {
+        //     index: 'index.html'
+        // }
+        historyApiFallback: true
     },
     plugins: [
         new ModuleFederationPlugin({
-            name: 'marketing',
+            name: 'auth',
             filename: 'remoteEntry.js',
             exposes: {
-                './MarketingApp': './src/bootstrap',
+                './AuthApp': './src/bootstrap',
             },
             shared: packageJson.dependencies
         }),

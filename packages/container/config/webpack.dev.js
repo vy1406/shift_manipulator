@@ -9,10 +9,15 @@ const commonConfig = require('./webpack.common');
 
 const packageJson = require('../package.json')
 
+const port = '8080'
+
 const devConfig = {
     mode: 'development',
+    output: {
+        publicPath: `http://localhost:${port}/`
+    },
     devServer: {
-        port: 8080,
+        port: port,
         historyApiFallback: {
             index: 'index.html'
         }
@@ -21,7 +26,8 @@ const devConfig = {
         new ModuleFederationPlugin({
             name: 'container', // not require, but following convention
             remotes: {
-                marketing: 'marketing@http://localhost:8081/remoteEntry.js' // marketing before @, matches the name of config.dev of marketing app
+                marketing: 'marketing@http://localhost:8081/remoteEntry.js', // marketing before @, matches the name of config.dev of marketing app
+                auth: 'auth@http://localhost:8082/remoteEntry.js' // marketing before @, matches the name of config.dev of marketing app
             },
             shared: packageJson.dependencies
         })
