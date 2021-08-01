@@ -18,7 +18,8 @@ const prodConfig = {
             name: 'container', // not require, but following convention
             remotes: {
                 marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`, // marketing before @, matches the name of config.dev of marketing app
-                auth: `auth@${domain}/auth/latest/remoteEntry.js` // marketing before @, matches the name of config.dev of marketing app
+                auth: `auth@${domain}/auth/latest/remoteEntry.js`, // marketing before @, matches the name of config.dev of marketing app
+                dashboard: `dashboard@${domain}/dashboard/latest/remoteEntry.js`
             },
             shared: packageJson.dependencies
         }),

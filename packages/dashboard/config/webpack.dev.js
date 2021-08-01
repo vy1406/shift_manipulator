@@ -2,15 +2,13 @@
 // config that we just wrote out inside that common file and merge
 // it together with a config that we're about to write inside this dev file
 const { merge } = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const commonConfig = require('./webpack.common');
 
-// sharing the container package.json dependencies to pass directly to shared modules
-
 const packageJson = require('../package.json')
 
-const port = '8080'
-
+const port = '8083'
 const devConfig = {
     mode: 'development',
     output: {
@@ -18,20 +16,24 @@ const devConfig = {
     },
     devServer: {
         port: port,
-        historyApiFallback: {
-            index: 'index.html'
-        }
+        // historyApiFallback: {
+        //     index: 'index.html'
+        // }
+        historyApiFallback: true
     },
     plugins: [
         new ModuleFederationPlugin({
-            name: 'container', // not require, but following convention
-            remotes: {
-                marketing: 'marketing@http://localhost:8081/remoteEntry.js', // marketing before @, matches the name of config.dev of marketing app
-                auth: 'auth@http://localhost:8082/remoteEntry.js', // marketing before @, matches the name of config.dev of marketing app
-                dashboard: 'dashboard@http://localhost:8083/remoteEntry.js' // marketing before @, matches the name of config.dev of marketing app
+            name: 'dashboard',
+            filename: 'remoteEntry.js',
+            exposes: {
+                './DashboardApp': './src/bootstrap',
             },
             shared: packageJson.dependencies
-        })
+        }),
+
+        new HtmlWebpackPlugin({
+          template: './public/index.html',
+        }), 
     ]
 };
 
