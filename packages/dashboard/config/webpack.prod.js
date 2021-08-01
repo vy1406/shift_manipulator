@@ -17,7 +17,7 @@ const prodConfig = {
             name: 'dashboard', // not require, but following convention
             filename: 'remoteEntry.js',
             exposes: {
-                './DashboardApp': './src/bootstrap' // marketing before @, matches the name of config.dev of marketing app
+                './DashboardApp': './src/bootstrap' // dashboard before @, matches the name of config.dev of marketing app
             },
             shared: packageJson.dependencies
         }),
