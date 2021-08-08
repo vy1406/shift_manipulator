@@ -8,7 +8,7 @@ const commonConfig = require('./webpack.common');
 
 const packageJson = require('../package.json')
 
-const port = '8083'
+const port = '8086'
 const devConfig = {
     mode: 'development',
     output: {
@@ -23,15 +23,10 @@ const devConfig = {
     },
     plugins: [
         new ModuleFederationPlugin({
-            name: 'dashboard',
+            name: 'users',
             filename: 'remoteEntry.js',
             exposes: {
-                './DashboardApp': './src/bootstrap',
-            },
-            remotes: {
-                messages: 'messages@http://localhost:8084/remoteEntry.js',
-                shifts: 'shifts@http://localhost:8085/remoteEntry.js', 
-                users: 'users@http://localhost:8086/remoteEntry.js'
+                './UsersApp': './src/bootstrap',
             },
             shared: packageJson.dependencies
         }),
