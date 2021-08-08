@@ -1,8 +1,7 @@
-import React, { Suspense, lazy, Fragment } from 'react';
+import React, { lazy, Suspense } from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
@@ -20,8 +19,8 @@ function TabPanel(props) {
     <div
       role="tabpanel"
       hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
+      id={`vertical-tabpanel-${index}`}
+      aria-labelledby={`vertical-tab-${index}`}
       {...other}
     >
       {value === index && (
@@ -41,8 +40,8 @@ TabPanel.propTypes = {
 
 function a11yProps(index) {
   return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    id: `vertical-tab-${index}`,
+    'aria-controls': `vertical-tabpanel-${index}`,
   };
 }
 
@@ -50,6 +49,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
+    display: 'flex',
+    height: '100vh',
+  },
+  tabs: {
+    borderRight: `1px solid ${theme.palette.divider}`,
   },
 }));
 
@@ -78,16 +82,22 @@ export default function NavigationTabs() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" variant="fullWidth">
-           {_.map(tabs, (tab, index) => <Tab label={tab.label} {...a11yProps(index)} />)}
-        </Tabs>
-      </AppBar>
-      {_.map(tabs, (tab, index) => <TabPanel value={value} index={index}>
-        <Suspense key={index} fallback={<div>loading...</div>}>
-                {tab.component}
-        </Suspense>
-      </TabPanel> )}
+      <Tabs
+        orientation="vertical"
+        variant="scrollable"
+        value={value}
+        onChange={handleChange}
+        aria-label="Vertical tabs example"
+        className={classes.tabs}
+      >
+      {_.map(tabs, (tab, index) => <Tab label={tab.label} {...a11yProps(index)} />)}
+      </Tabs>
+        {_.map(tabs, (tab, index) => <TabPanel value={value} index={index}>
+         <Suspense key={index} fallback={<div>loading...</div>}>
+                 {tab.component}
+         </Suspense>
+       </TabPanel> )}
+
     </div>
   );
 }
