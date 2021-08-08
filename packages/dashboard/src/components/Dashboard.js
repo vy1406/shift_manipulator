@@ -9,7 +9,6 @@ export default function Dashboard() {
 
   return (
           <div>
-<<<<<<< HEAD
             <hr/>
               <Suspense fallback={<div>loading UsersLazy...</div>}>
                 <UsersLazy />
@@ -19,14 +18,6 @@ export default function Dashboard() {
                 <ShiftsLazy />
               </Suspense>
               <hr/>
-=======
-              <Suspense fallback={<div>loading UsersLazy...</div>}>
-                <UsersLazy />
-              </Suspense>
-              <Suspense fallback={<div>loading ShiftsLazy...</div>}>
-                <ShiftsLazy />
-              </Suspense>
->>>>>>> bf4cf4954777594b4c5f41877eb797c309aecb18
               <Suspense fallback={<div>loading MessagesLazy...</div>}>
                 <MessagesLazy />
               </Suspense>
