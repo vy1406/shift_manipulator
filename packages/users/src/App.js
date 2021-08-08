@@ -3,7 +3,7 @@ import { StylesProvider, createGenerateClassName } from '@material-ui/core/style
 import Users from './components/Users';
 
 const generateClassName =  createGenerateClassName({
-    productionPrefix: 'users-',
+    productionPrefix: 'users',
 })
 
 export default ( ) => { 

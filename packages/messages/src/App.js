@@ -3,7 +3,7 @@ import { StylesProvider, createGenerateClassName } from '@material-ui/core/style
 import Messages from './components/Messages';
 
 const generateClassName =  createGenerateClassName({
-    productionPrefix: 'messages-',
+    productionPrefix: 'messages',
 })
 
 export default ( ) => { 

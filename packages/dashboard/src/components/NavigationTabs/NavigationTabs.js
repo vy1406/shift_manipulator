@@ -46,7 +46,7 @@ function a11yProps(index) {
 }
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  tabWrapper: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
@@ -81,7 +81,7 @@ export default function NavigationTabs() {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.tabWrapper}>
       <Tabs
         orientation="vertical"
         variant="scrollable"
@@ -92,11 +92,13 @@ export default function NavigationTabs() {
       >
       {_.map(tabs, (tab, index) => <Tab label={tab.label} {...a11yProps(index)} />)}
       </Tabs>
-        {_.map(tabs, (tab, index) => <TabPanel value={value} index={index}>
-         <Suspense key={index} fallback={<div>loading...</div>}>
-                 {tab.component}
-         </Suspense>
-       </TabPanel> )}
+        {_.map(tabs, (tab, index) =>
+          <TabPanel value={value} index={index}>
+            <Suspense key={index} fallback={<div>loading...</div>}>
+                    {tab.component}
+            </Suspense>
+          </TabPanel>)
+      }
 
     </div>
   );

@@ -3,7 +3,7 @@ import { StylesProvider, createGenerateClassName } from '@material-ui/core/style
 import Dashboard from './containers/Dashboard';
 
 const generateClassName =  createGenerateClassName({
-    productionPrefix: 'db-',
+    productionPrefix: 'db',
 })
 
 export default ( ) => { 
