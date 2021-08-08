@@ -3,6 +3,6 @@ import React from 'react';
 export default function Shifts() {
 
   return (
-    <div>Shifts</div>
+    <div>Shifts app</div>
   );
 }
