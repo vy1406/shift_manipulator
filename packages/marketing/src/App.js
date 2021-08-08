@@ -6,7 +6,7 @@ import Landing from './components/Landing';
 import Pricing from './components/Pricing';
 
 const generateClassName =  createGenerateClassName({
-    productionPrefix: 'marketing',
+    productionPrefix: 'marketing-',
 })
 
 export default ( { history }) => { 
