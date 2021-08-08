@@ -1,6 +1,6 @@
 import React from 'react';
 import { StylesProvider, createGenerateClassName } from '@material-ui/core/styles';
-import Dashboard from './components/Dashboard';
+import Dashboard from './containers/Dashboard';
 
 const generateClassName =  createGenerateClassName({
     productionPrefix: 'db-',
