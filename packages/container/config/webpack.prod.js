@@ -19,7 +19,10 @@ const prodConfig = {
             remotes: {
                 marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`, // marketing before @, matches the name of config.dev of marketing app
                 auth: `auth@${domain}/auth/latest/remoteEntry.js`, // marketing before @, matches the name of config.dev of marketing app
-                dashboard: `dashboard@${domain}/dashboard/latest/remoteEntry.js`
+                dashboard: `dashboard@${domain}/dashboard/latest/remoteEntry.js`,
+                shifts: `shifts@${domain}/shifts/latest/remoteEntry.js`,
+                users: `users@${domain}/users/latest/remoteEntry.js`, // marketing before @, matches the name of config.dev of marketing app
+                messages: `messages@${domain}/messages/latest/remoteEntry.js`
             },
             shared: packageJson.dependencies
         }),

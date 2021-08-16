@@ -7,10 +7,10 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-const UsersLazy = lazy(() => import('../../containers/UsersApp'))
-const ShiftsLazy = lazy(() => import('../../containers/ShiftsApp'))
-const MessagesLazy = lazy(() => import('../../containers/MessagesApp'))
-
+// const UsersLazy = lazy(() => import('../../containers/UsersApp'))
+// const ShiftsLazy = lazy(() => import('../../containers/ShiftsApp'))
+// const MessagesLazy = lazy(() => import('../../containers/MessagesApp'))
+// TODO: remove this component
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

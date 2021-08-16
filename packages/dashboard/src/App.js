@@ -8,10 +8,10 @@ const generateClassName =  createGenerateClassName({
 
 export default ( ) => { 
     return (
-        <div>
-            <StylesProvider generateClassName={generateClassName}>
+        <StylesProvider generateClassName={generateClassName}>
+            <div>
                 <Dashboard />
-            </StylesProvider>
-        </div>
+            </div>
+        </StylesProvider>
     )
 }

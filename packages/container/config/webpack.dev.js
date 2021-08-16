@@ -28,7 +28,10 @@ const devConfig = {
             remotes: {
                 marketing: 'marketing@http://localhost:8081/remoteEntry.js', // marketing before @, matches the name of config.dev of marketing app
                 auth: 'auth@http://localhost:8082/remoteEntry.js', // marketing before @, matches the name of config.dev of marketing app
-                dashboard: 'dashboard@http://localhost:8083/remoteEntry.js' // marketing before @, matches the name of config.dev of marketing app
+                dashboard: 'dashboard@http://localhost:8083/remoteEntry.js', // marketing before @, matches the name of config.dev of marketing app
+                messages: 'messages@http://localhost:8084/remoteEntry.js',
+                shifts: 'shifts@http://localhost:8085/remoteEntry.js', 
+                users: 'users@http://localhost:8086/remoteEntry.js'
             },
             shared: packageJson.dependencies
         })

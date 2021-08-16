@@ -40,9 +40,6 @@ const useStyles = makeStyles((theme) => ({
   toolbarTitle: {
     flexGrow: 1,
   },
-  link: {
-    margin: theme.spacing(1, 1.5),
-  },
   heroContent: {
     padding: theme.spacing(8, 0, 6),
   },

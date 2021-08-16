@@ -28,11 +28,7 @@ const devConfig = {
             exposes: {
                 './DashboardApp': './src/bootstrap',
             },
-            remotes: {
-                messages: 'messages@http://localhost:8084/remoteEntry.js',
-                shifts: 'shifts@http://localhost:8085/remoteEntry.js', 
-                users: 'users@http://localhost:8086/remoteEntry.js'
-            },
+
             shared: packageJson.dependencies
         }),
 
