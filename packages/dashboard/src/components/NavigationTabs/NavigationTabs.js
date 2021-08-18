@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
-  },
+  }
 }));
 
 export default function NavigationTabs() {

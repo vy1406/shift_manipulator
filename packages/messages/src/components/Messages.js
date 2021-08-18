@@ -6,3 +6,4 @@ export default function Messages() {
     <div>Messages app</div>
   );
 }
+
