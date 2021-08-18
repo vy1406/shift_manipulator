@@ -1,8 +1,12 @@
-import React from 'react';
-
+import React, { Fragment } from "react"
+import UsersComponent from '../containers/UsersComponent/UsersComponent'
+import Modals from "../containers/Modals/Modals";
 export default function Users() {
 
   return (
-    <div>Users app</div>
+    <Fragment>
+      <UsersComponent />
+      <Modals />  
+    </Fragment>
   );
 }
