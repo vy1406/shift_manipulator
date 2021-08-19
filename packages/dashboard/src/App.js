@@ -4,13 +4,15 @@ import Dashboard from './containers/Dashboard';
 
 const generateClassName =  createGenerateClassName({
     productionPrefix: 'db',
+    disableGlobal: true
 })
 
 export default ( ) => { 
     return (
         <StylesProvider generateClassName={generateClassName}>
             <div>
-                <Dashboard />
+                {/* <Dashboard /> */}
+                dashboard app
             </div>
         </StylesProvider>
     )

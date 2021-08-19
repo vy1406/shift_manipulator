@@ -3,8 +3,9 @@ import { StylesProvider, createGenerateClassName } from '@material-ui/core/style
 import Shifts from './components/Shifts';
 
 const generateClassName =  createGenerateClassName({
-    productionPrefix: 'shifts',
-})
+    productionPrefix: 'shifts-',
+    disableGlobal: true
+}, )
 
 export default ( ) => { 
     return (

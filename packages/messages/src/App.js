@@ -4,6 +4,7 @@ import Messages from './components/Messages';
 
 const generateClassName =  createGenerateClassName({
     productionPrefix: 'messages',
+    disableGlobal: true
 })
 
 export default ( ) => { 
