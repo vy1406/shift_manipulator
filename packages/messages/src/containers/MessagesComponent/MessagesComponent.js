@@ -45,6 +45,7 @@ const MessagesComponent = ({ apiMsgs, apiUsers, isLoading, error, fetchMsgs, fet
 
     useEffect(() => {
         fetchMsgs()
+        fetchUsers()
     }, [])
 
     useEffect(() => {
@@ -118,6 +119,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     fetchMsgs: () => dispatch(getMsgs()),
+    fetchUsers: () => dispatch(getUsers()),
     addMsg: (formMsg) => dispatch(addToDbMsg(formMsg)),
 })
 

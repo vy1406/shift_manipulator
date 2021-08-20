@@ -8,6 +8,7 @@ export const useStyles = makeStyles(() => ({
       border: '1px solid black'
     },
     backButton: {
+      position: 'absolute',
       width: '100px',
       height: '20px',
       backgroundColor: 'blue',

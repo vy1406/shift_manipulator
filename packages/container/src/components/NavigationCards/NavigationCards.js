@@ -2,6 +2,7 @@ import React,  { lazy, Suspense } from 'react';
 import _ from 'lodash';
 import Progress from '../Progress';
 import {useStyles} from './style';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const MessagesLazy = lazy(() => import('../MessagesApp'))
 const ShiftsLazy = lazy(() => import('../ShiftsApp'))
@@ -33,7 +34,7 @@ export default ( ) => {
 
   const renderAppByCard = () => {
     return (
-      <Suspense key={selectedCard} fallback={<Progress />}>
+      <Suspense key={selectedCard} fallback={<Progress />} >
         {cards[selectedCard].component}
       </Suspense>
     )
@@ -57,8 +58,8 @@ export default ( ) => {
 
   return (
       <div>
-          <div onClick={() => setSelectedCard(-1)} className={classes.backButton}>Back </div>
-          {isCardSelected ? renderAppByCard(1) : renderViewCards()}
+        {isCardSelected && <ArrowBackIcon color="primary" fontSize="large" onClick={() => setSelectedCard(-1)} className={classes.backButton}/>}
+        {isCardSelected ? renderAppByCard(1) : renderViewCards()}
       </div>
   )
 }
