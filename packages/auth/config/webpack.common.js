@@ -5,7 +5,7 @@ module.exports = {
         // for example, babal. ( processing code from es15-es20 into es5)
         rules: [
             {
-                test: /\.m?js$/,
+                test: /\.js|\.jsx$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -14,6 +14,10 @@ module.exports = {
                         plugins: ['@babel/plugin-transform-runtime']
                     }
                 }
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
             }
         ]
     }

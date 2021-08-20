@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { Fragment } from "react"
+import MessagesComponent from '../containers/MessagesComponent/MessagesComponent'
+import Modals from "../containers/Modals/Modals";
 
 export default function Messages() {
 
   return (
-    <div>Messages app</div>
+    <Fragment>
+      <MessagesComponent />
+      <Modals />  
+    </Fragment>
   );
 }
 
