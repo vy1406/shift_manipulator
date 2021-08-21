@@ -7,7 +7,7 @@ export default function Messages() {
   return (
     <Fragment>
       <MessagesComponent />
-      <Modals />  
+      <Modals />
     </Fragment>
   );
 }

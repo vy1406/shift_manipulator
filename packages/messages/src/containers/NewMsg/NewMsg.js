@@ -8,7 +8,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import Chip from '@material-ui/core/Chip';
 import Paper from '@material-ui/core/Paper';
-import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -33,25 +32,22 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function NewMsg(props) {
+export default function NewMsg({ submitMsg, users, isOpen, toggleIsOpen}) {
     const classes = useStyles();
-    const [open, setOpen] = useState(false);
     const [msgForm, setMsgForm] = useState({ sender_id: "60e5e3544ea83558e0482710", reciever_ids: [], body: "", subject: "" });
-
     const updateForm = (key, value) => setMsgForm({ ...msgForm, [key]: value })
 
-    const onSubmit = () => {
-        props.submitMsg(msgForm)
-        setOpen(false);
-    };
+    useEffect(() => {
+        updateForm("reciever_ids", users)
+    }, [users, toggleIsOpen]) 
 
-    const handleClickOpen = () => {
-        updateForm("reciever_ids", props.users)
-        setOpen(true);
+    const onSubmit = () => {
+        submitMsg(msgForm)
+        toggleIsOpen(false);
     };
 
     const handleClose = () => {
-        setOpen(false);
+        toggleIsOpen(false);
     };
 
     const handleDelete = (i) => {
@@ -60,17 +56,9 @@ export default function NewMsg(props) {
         updateForm("reciever_ids", handleRecievers)
     };
 
-    const handleClick = () => {
-        console.log('You clicked the Chip.');
-    };
-
-
     return (
         <div>
-            <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                New Msg
-            </Button>
-            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+            <Dialog open={isOpen} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogContent>
                     <DialogContentText>Recievers:</DialogContentText>
                     <Paper component="ul" className={classes.root}>

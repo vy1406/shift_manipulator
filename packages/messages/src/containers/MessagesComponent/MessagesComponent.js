@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 import { getMsgs, addToDbMsg } from '../../redux/actions/msgs';
 import { getUsers } from '../../redux/actions/users';
@@ -17,6 +17,9 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import OpenIconSpeedDial from '../../components/SpeedDial/SpeedDial';
+import MessageIcon from '@material-ui/icons/Message';
+import EmailIcon from '@material-ui/icons/Email';
 
 const useRowStyles = makeStyles({
     root: {
@@ -24,12 +27,17 @@ const useRowStyles = makeStyles({
             borderBottom: 'unset',
         },
     },
+    table: {
+        height: '70vh',
+        width: '80vw',
+        margin: '80px auto'
+    }
 });
 
 
 const MessagesComponent = ({ apiMsgs, apiUsers, isLoading, error, fetchMsgs, fetchUsers, addMsg }) => {
-    // const classes = useStyles();
-    const [isOpen, setIsOpen] = React.useState([]);
+    const [isOpen, setIsOpen] = useState([]);
+    const [isMsgDialogOpen,setIsMsgDialogOpen] = useState(false)
     const classes = useRowStyles();
 
     const handleOnClick = (i) => {
@@ -56,13 +64,18 @@ const MessagesComponent = ({ apiMsgs, apiUsers, isLoading, error, fetchMsgs, fet
         setIsOpen(newIsOpen)
     }, [apiMsgs])
 
+    const speedDialActions = [
+        { icon: <MessageIcon />, name: 'Message', onIconAction: () => setIsMsgDialogOpen(true) },
+        { icon: <EmailIcon />, name: 'Email', onIconAction: () => console.log('open email dialog') },
+      ];
+
     return (
         <div>
             {isLoading && <p>Loading...</p>}
             {apiMsgs.length === 0 && !isLoading && <p>No msgs available!</p>}
             {error && !isLoading && <p>{error}</p>}
             {apiMsgs.length > 0 &&
-                <TableContainer component={Paper}>
+                <TableContainer component={Paper} className={classes.table}>
                     <Table aria-label="collapsible table">
                         <TableHead>
                             <TableRow>
@@ -102,7 +115,13 @@ const MessagesComponent = ({ apiMsgs, apiUsers, isLoading, error, fetchMsgs, fet
                     </Table>
                 </TableContainer>
             }
-            <NewMsg  users={apiUsers} msgs={apiMsgs} submitMsg={handleSubmitMsg}/>
+            <NewMsg
+                users={apiUsers}
+                submitMsg={handleSubmitMsg}
+                isOpen={isMsgDialogOpen}
+                toggleIsOpen={(isOpen) => setIsMsgDialogOpen(isOpen)}
+            />
+            <OpenIconSpeedDial actions={speedDialActions}/>
         </div>
     )
 }
