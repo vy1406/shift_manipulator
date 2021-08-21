@@ -5,14 +5,13 @@ export const useStyles = makeStyles(() => ({
       width: '100px',
       height: '100px',
       backgroundColor: 'aqua',
-      border: '1px solid black'
+      border: '1px solid black',
+      cursor: 'pointer',
     },
     backButton: {
       position: 'absolute',
-      width: '100px',
-      height: '20px',
-      backgroundColor: 'blue',
-      border: '1px solid black'
+      top: '80px',
+      cursor: 'pointer',
     },
     cardWrapper: {
       display: 'flex',

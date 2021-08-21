@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 import { getUsers, addToDbUser } from '../../redux/actions/users';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
@@ -9,8 +9,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import NewUserBtn from "../AddUser/AddUser"
-
+import OpenIconSpeedDial from '../../../../messages/src/components/SpeedDial/SpeedDial';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import NewUser from '../NewUser/NewUser';
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -43,6 +44,7 @@ const useStyles = makeStyles({
 
 const UsersComponent = ({ apiUsers, isLoading, error, fetchUsers, addUser }) => {
     const classes = useStyles();
+    const [isNewUserDialogOpen, setIsNewUserDialogOpen] = useState(false)
 
     const handleSubmitUser = formUser => {
         addUser(formUser)
@@ -51,6 +53,10 @@ const UsersComponent = ({ apiUsers, isLoading, error, fetchUsers, addUser }) => 
     useEffect(() => {
         fetchUsers()
     }, [])
+
+    const speedDialActions = [
+        { icon: <PersonAddIcon />, name: 'Add User', onIconAction: () => setIsNewUserDialogOpen(true) },
+      ];
 
     return (
         <div>
@@ -78,7 +84,13 @@ const UsersComponent = ({ apiUsers, isLoading, error, fetchUsers, addUser }) => 
                 </Table>
             </TableContainer>
             }
-            <NewUserBtn submitUser={handleSubmitUser} />
+            <NewUser
+                submitUser={handleSubmitUser}
+                handleForm={() => console.log('lol1')}
+                isOpen={isNewUserDialogOpen}
+                toggleIsOpen={(isOpen) => setIsNewUserDialogOpen(isOpen)}
+            />  
+            <OpenIconSpeedDial actions={speedDialActions}/>
         </div>
     )
 }
