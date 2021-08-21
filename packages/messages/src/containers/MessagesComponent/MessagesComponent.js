@@ -27,8 +27,8 @@ const useRowStyles = makeStyles({
             borderBottom: 'unset',
         },
     },
-    table: {
-        height: '70vh',
+    tableContainer: {
+        maxHeight: '70vh',
         width: '80vw',
         margin: '80px auto'
     }
@@ -75,7 +75,7 @@ const MessagesComponent = ({ apiMsgs, apiUsers, isLoading, error, fetchMsgs, fet
             {apiMsgs.length === 0 && !isLoading && <p>No msgs available!</p>}
             {error && !isLoading && <p>{error}</p>}
             {apiMsgs.length > 0 &&
-                <TableContainer component={Paper} className={classes.table}>
+                <TableContainer component={Paper} className={classes.tableContainer}>
                     <Table aria-label="collapsible table">
                         <TableHead>
                             <TableRow>

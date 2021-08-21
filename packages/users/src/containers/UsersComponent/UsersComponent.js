@@ -34,6 +34,11 @@ const useStyles = makeStyles({
     table: {
         minWidth: 650,
     },
+    tableContainer: {
+        maxHeight: '70vh',
+        width: '80vw',
+        margin: '80px auto'
+    }
 });
 
 const UsersComponent = ({ apiUsers, isLoading, error, fetchUsers, addUser }) => {
@@ -52,7 +57,7 @@ const UsersComponent = ({ apiUsers, isLoading, error, fetchUsers, addUser }) => 
             {isLoading && <p>Loading...</p>}
             {apiUsers.length === 0 && !isLoading && <p>No users available!</p>}
             {error && !isLoading && <p>{error}</p>}
-            {apiUsers.length > 0 && <TableContainer component={Paper}>
+            {apiUsers.length > 0 && <TableContainer component={Paper} className={classes.tableContainer}>
                 <Table className={classes.table} aria-label="customized table">
                     <TableHead>
                         <TableRow>
