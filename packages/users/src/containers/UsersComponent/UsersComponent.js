@@ -9,7 +9,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import OpenIconSpeedDial from '../../../../messages/src/components/SpeedDial/SpeedDial';
+import OpenIconSpeedDial from '../../components/SpeedDial/SpeedDial';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import NewUser from '../NewUser/NewUser';
 
