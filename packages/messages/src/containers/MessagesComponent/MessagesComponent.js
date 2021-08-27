@@ -28,9 +28,9 @@ const useRowStyles = makeStyles({
         },
     },
     tableContainer: {
-        maxHeight: '70vh',
         width: '80vw',
-        margin: '80px auto'
+        margin: '80px auto',
+        height:'70vh'
     }
 });
 

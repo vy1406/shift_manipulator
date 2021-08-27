@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
   speedDial: {
     position: 'fixed',
-    bottom: theme.spacing(2),
+    bottom: theme.spacing(10),
     right: theme.spacing(2),
   },
 }));

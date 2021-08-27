@@ -36,9 +36,9 @@ const useStyles = makeStyles({
         minWidth: 650,
     },
     tableContainer: {
-        maxHeight: '70vh',
         width: '80vw',
-        margin: '80px auto'
+        margin: '80px auto',
+        height:'70vh'       
     }
 });
 
