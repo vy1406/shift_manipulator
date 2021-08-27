@@ -17,10 +17,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export default function OpenIconSpeedDial({ actions }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [hidden, setHidden] = React.useState(false);
+
+  const handleVisibility = () => {
+    setHidden((prevHidden) => !prevHidden);
+  };
 
   const handleOpen = () => {
     setOpen(true);
