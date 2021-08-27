@@ -3,6 +3,10 @@ import _ from 'lodash';
 import Progress from '../Progress';
 import {useStyles} from './style';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import PeopleIcon from '@material-ui/icons/People';
+import EventAvailableIcon from '@material-ui/icons/EventAvailable';
+import MessageIcon from '@material-ui/icons/Message';
+import Typography from '@material-ui/core/Typography';
 
 const MessagesLazy = lazy(() => import('../MessagesApp'))
 const ShiftsLazy = lazy(() => import('../ShiftsApp'))
@@ -16,17 +20,20 @@ export default ( ) => {
           {
             index:0,
             component: <UsersLazy />,
-            label: 'Users'
+            label: 'Users',
+            icon: <PeopleIcon className={classes.cardIcon}/>,
           },
           {
             index:1,
             component: <ShiftsLazy />,
-            label: 'Shifts'
+            label: 'Shifts',
+            icon: <EventAvailableIcon className={classes.cardIcon}/>,
           },
           {
             index:2,
             component: <MessagesLazy />,
-            label: 'Messages'
+            label: 'Messages',
+            icon: <MessageIcon className={classes.cardIcon}/>,
           }
       ]     
 
@@ -45,11 +52,21 @@ export default ( ) => {
       <div className={classes.cardWrapper}>
         {_.map(cards, (singleCard) => (
           <div
-          key={singleCard.index}
-          className={classes.singleCard}
-          onClick={() => setSelectedCard(singleCard.index)}
+            key={singleCard.index}
+            className={classes.singleCard}
+            onClick={() => setSelectedCard(singleCard.index)}
           >
+          <Typography
+              align="center"
+              color="textPrimary"
+              gutterBottom
+              className={classes.cardLabel}
+            >
             {singleCard.label}
+          </Typography>
+            
+         {singleCard.icon}
+
           </div>
         ))}
       </div>
