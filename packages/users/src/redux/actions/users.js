@@ -13,3 +13,10 @@ export function addToDbUser(formUser) {
         payload: formUser,
     }
 }
+
+export function setLoggedUser(loggedUser) {
+    return {
+        type: type.SET_LOGGED_USER,
+        payload: loggedUser
+    }
+}

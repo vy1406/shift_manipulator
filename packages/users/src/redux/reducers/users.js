@@ -4,6 +4,7 @@ const initialState = {
     users: [],
     loading: false,
     error: null,
+    loggedUser: {}
 }
 
 export default function users(state = initialState, action) {
@@ -12,6 +13,11 @@ export default function users(state = initialState, action) {
             return {
                 ...state,
                 loading: true,
+            }
+        case type.SET_LOGGED_USER:
+            return {
+                ...state,
+                loggedUser: action.loggedUser
             }
         case type.GET_USERS_SUCCESS:
             return {

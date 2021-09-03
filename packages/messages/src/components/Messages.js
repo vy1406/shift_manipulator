@@ -1,9 +1,15 @@
-import React, { Fragment } from "react"
+import React, { Fragment, useEffect } from "react"
 import MessagesComponent from '../containers/MessagesComponent/MessagesComponent'
 import Modals from "../containers/Modals/Modals";
+import { setLoggedUser } from "../redux/actions/msgs";
+import { connect } from "react-redux";
 
-export default function Messages( { loggedUser }) {
-  console.log('in msmgs, ', loggedUser)
+const Messages = ( { loggedUser, setLoggedUser }) => {
+
+  useEffect(() => {
+    setLoggedUser(loggedUser)
+  }, [])
+
   return (
     <Fragment>
       <MessagesComponent />
@@ -12,3 +18,10 @@ export default function Messages( { loggedUser }) {
   );
 }
 
+const mapStateToProps = (state) => ({ })
+
+const mapDispatchToProps = (dispatch) => ({
+  setLoggedUser: (loggedUser) => dispatch(setLoggedUser(loggedUser)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Messages);

@@ -13,3 +13,10 @@ export function addToDbMsg(formMsg) {
         payload: formMsg,
     }
 }
+
+export function setLoggedUser(loggedUser) {
+    return {
+        type: type.SET_LOGGED_USER,
+        payload: loggedUser
+    }
+}
