@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Progress from './components/Progress';
 
 import { createBrowserHistory } from 'history';
+import { SIGNED_USER } from './helpers/helpers';
 
 const MarketingLazy = lazy(() => import('./components/MarketingApp'))
 const AuthLazy = lazy(() => import('./components/AuthApp'))
@@ -23,6 +24,16 @@ const history = createBrowserHistory();
 export default () => {
 
     const [isSignedIn, setIsSignedIn] = useState(false)
+    const [loggedUser, setLoggedUser] = useState(null)
+
+    const handleOnSignedIn = () => {
+        setIsSignedIn(true)
+        if ( process.env.NODE_ENV === 'development' ) {
+            setLoggedUser(SIGNED_USER)
+        } else {
+            // set fetched user.
+        }
+    }
 
     useEffect(() => {
         if ( isSignedIn ) {
@@ -40,11 +51,11 @@ export default () => {
                     <Suspense fallback={<Progress />}>
                         <Switch>
                             <Route path="/auth" > 
-                                <AuthLazy onSignIn={() => setIsSignedIn(true)} />
+                                <AuthLazy onSignIn={() => handleOnSignedIn()} />
                             </Route>
                             <Route path="/dashboard" >
                                 {!isSignedIn && <Redirect to="/" />}
-                                <DashboardLazy />
+                                <DashboardLazy loggedUser={loggedUser}/>
                             </Route>
                             <Route path="/" component={MarketingLazy} />
                         </Switch>

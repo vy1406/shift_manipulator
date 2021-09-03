@@ -9,12 +9,12 @@ const generateClassName =  createGenerateClassName({
     disableGlobal: true
 })
 
-export default ( ) => { 
+export default ({ loggedUser }) => { 
     return (
         <div>
             <StylesProvider generateClassName={generateClassName}>
                 <Provider store={store}>
-                    <Messages />
+                    <Messages loggedUser={loggedUser}/>
                 </Provider>
             </StylesProvider>
         </div>

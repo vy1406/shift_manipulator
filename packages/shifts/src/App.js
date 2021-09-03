@@ -7,11 +7,11 @@ const generateClassName =  createGenerateClassName({
     disableGlobal: true
 }, )
 
-export default ( ) => { 
+export default ( {loggedUser} ) => { 
     return (
         <div>
             <StylesProvider generateClassName={generateClassName}>
-                <Shifts />
+                <Shifts loggedUser={loggedUser}/>
             </StylesProvider>
         </div>
     )

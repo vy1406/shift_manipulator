@@ -20,6 +20,7 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import OpenIconSpeedDial from '../../components/SpeedDial/SpeedDial';
 import MessageIcon from '@material-ui/icons/Message';
 import EmailIcon from '@material-ui/icons/Email';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useRowStyles = makeStyles({
     root: {
@@ -31,7 +32,7 @@ const useRowStyles = makeStyles({
         width: '80vw',
         margin: '80px auto',
         height:'70vh'
-    }
+    },
 });
 
 
@@ -71,7 +72,7 @@ const MessagesComponent = ({ apiMsgs, apiUsers, isLoading, error, fetchMsgs, fet
 
     return (
         <div>
-            {isLoading && <p>Loading...</p>}
+            {isLoading && <CircularProgress />}
             {apiMsgs.length === 0 && !isLoading && <p>No msgs available!</p>}
             {error && !isLoading && <p>{error}</p>}
             {apiMsgs.length > 0 &&

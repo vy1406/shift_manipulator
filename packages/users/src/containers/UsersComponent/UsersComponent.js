@@ -12,6 +12,7 @@ import Paper from '@material-ui/core/Paper';
 import OpenIconSpeedDial from '../../components/SpeedDial/SpeedDial';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import NewUser from '../NewUser/NewUser';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -60,7 +61,7 @@ const UsersComponent = ({ apiUsers, isLoading, error, fetchUsers, addUser }) => 
 
     return (
         <div>
-            {isLoading && <p>Loading...</p>}
+            {isLoading && <CircularProgress/>}
             {apiUsers.length === 0 && !isLoading && <p>No users available!</p>}
             {error && !isLoading && <p>{error}</p>}
             {apiUsers.length > 0 && <TableContainer component={Paper} className={classes.tableContainer}>

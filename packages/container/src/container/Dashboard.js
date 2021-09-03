@@ -2,11 +2,10 @@ import React from 'react';
 import _ from 'lodash';
 import NavigationCards from '../components/NavigationCards/NavigationCards'
 
-export default ( ) => { 
-
+export default ( { loggedUser } ) => { 
     return (
         <div>
-          <NavigationCards />
+          <NavigationCards loggedUser={loggedUser}/>
         </div>
     )
 }

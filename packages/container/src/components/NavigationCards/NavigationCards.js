@@ -12,26 +12,26 @@ const MessagesLazy = lazy(() => import('../MessagesApp'))
 const ShiftsLazy = lazy(() => import('../ShiftsApp'))
 const UsersLazy = lazy(() => import('../UsersApp'))
 
-export default ( ) => { 
+export default ( { loggedUser } ) => { 
   const classes = useStyles();
   const [selectedCard, setSelectedCard] = React.useState(-1);
-
+  
   const cards = [
           {
             index:0,
-            component: <UsersLazy />,
+            component: <UsersLazy loggedUser={loggedUser}/>,
             label: 'Users',
             icon: <PeopleIcon className={classes.cardIcon}/>,
           },
           {
             index:1,
-            component: <ShiftsLazy />,
+            component: <ShiftsLazy loggedUser={loggedUser}/>,
             label: 'Shifts',
             icon: <EventAvailableIcon className={classes.cardIcon}/>,
           },
           {
             index:2,
-            component: <MessagesLazy />,
+            component: <MessagesLazy loggedUser={loggedUser}/>,
             label: 'Messages',
             icon: <MessageIcon className={classes.cardIcon}/>,
           }
