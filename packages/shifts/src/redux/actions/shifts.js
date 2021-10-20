@@ -7,6 +7,13 @@ export function getSchedule(schedule) {
     }
 }
 
+export function addToDbReqShift(reqShiftForm) {
+    return {
+        type: type.ADD_REQ_SHIFT_REQUESTED,
+        payload: reqShiftForm,
+    }
+}
+
 export function setLoggedUser(loggedUser) {
     return {
         type: type.SET_LOGGED_USER,

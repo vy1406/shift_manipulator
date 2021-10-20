@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { connect } from "react-redux";
-import { getSchedule } from '../../redux/actions/schedule';
+import { getSchedule } from '../../redux/actions/shifts';
 import { getUsers } from '../../redux/actions/users';
 import Paper from '@material-ui/core/Paper';
 import LinearProgress from '@material-ui/core/LinearProgress';
