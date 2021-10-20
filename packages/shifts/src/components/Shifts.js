@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { Fragment, useEffect } from "react"
+import ScheduleComponent from '../containers/ScheduleComponent/ScheduleComponent';
+import { setLoggedUser } from '../redux/actions/schedule';
+import { connect } from "react-redux";
 
-export default function Shifts({ loggedUser }) {
-  console.log('ion shifts', loggedUser)
+const Shifts = ( { loggedUser, setLoggedUser }) => {
+  useEffect(() => {
+    setLoggedUser(loggedUser)
+  }, [])
+
   return (
-    <div>Shifts app</div>
+    <Fragment >
+      <ScheduleComponent />
+      {/* <Modals /> */}
+    </Fragment>
   );
 }
+
+const mapStateToProps = (state) => ({ })
+
+const mapDispatchToProps = (dispatch) => ({
+  setLoggedUser: (loggedUser) => dispatch(setLoggedUser(loggedUser)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Shifts);
