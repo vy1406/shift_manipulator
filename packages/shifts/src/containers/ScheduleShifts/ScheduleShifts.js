@@ -95,14 +95,7 @@ const ScheduleShifts = ({ apiUsers, apiSubmittedShifts, isLoading, error, state,
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [subShift, setSubShift] = useState([]);
-    const [shiftsDate, setShiftsDate] = useState([]);
     const [scheduledShifts, setScheduledShifts] = useState({});
-    const [age, setAge] = React.useState([]);
-
-
-    const wantedShift = (value) => {
-        return value === true
-    }
 
     useEffect(() => {
         fetchSubmittedShifts()
@@ -151,10 +144,7 @@ const ScheduleShifts = ({ apiUsers, apiSubmittedShifts, isLoading, error, state,
     };
 
     const submitScheduledShifts = () => {
-        console.log("==========schedule---component==========");
-        console.log(scheduledShifts);
-        console.log("==========schedule---component==========");
-        // addScheduledShifts(scheduledShifts)
+        addScheduledShifts(scheduledShifts)
         setOpen(false);
     }
 
@@ -200,63 +190,49 @@ const ScheduleShifts = ({ apiUsers, apiSubmittedShifts, isLoading, error, state,
                                         </Select>
                                     </FormControl>
 
-
-
-                                    {/* <FormControl variant="outlined" className={classes.formControl}>
+                                    <FormControl variant="outlined" className={classes.formControl}>
                                         <InputLabel id="demo-dialog-select-label">Noon</InputLabel>
                                         <Select
-                                            // label="lol"
                                             className={classes.select}
                                             fullWidth
-                                            // multiple
                                             labelId="demo-simple-select-outlined-label"
                                             id="demo-simple-select-outlined"
-                                            value={scheduledShifts.shifts[i].noon}
+                                            value={shift.noon}
                                             onChange={e => handleChange(e, i, "noon")}
                                             input={<Input />}
                                         >
                                             <MenuItem value={""}>
                                                 <em>None</em>
                                             </MenuItem>
-                                            {shift.shifts.map((s, k) => {
+                                            {subShift.map((s, k) => {
                                                 return (
-                                                    // subShift[k].shifts[i].noonCheckbox ?
-                                                    //     <MenuItem key={k} value={subShift[k].userId}>{subShift[k].userName}</MenuItem> : null
-
-                                                    subShift[k] ? subShift[k].shifts[i].noonCheckbox ? <MenuItem key={k} value={subShift[k].userId}>{subShift[k].userName}</MenuItem> : null : null
-                                                    // s.noonCheckbox ? <MenuItem key={k} value={shift.userId}>{shift.userName}</MenuItem> : null 
+                                                    s.shifts[i].noonCheckbox ? <MenuItem key={k} value={s.userId}>{s.userName}</MenuItem> : null
                                                 )
                                             })}
                                         </Select>
                                     </FormControl>
+
                                     <FormControl variant="outlined" className={classes.formControl}>
                                         <InputLabel id="demo-dialog-select-label">Evening</InputLabel>
                                         <Select
-                                            // label="lol"
                                             className={classes.select}
                                             fullWidth
-                                            // multiple
                                             labelId="demo-simple-select-outlined-label"
                                             id="demo-simple-select-outlined"
-                                            value={scheduledShifts.shifts[i].evening}
+                                            value={shift.evening}
                                             onChange={e => handleChange(e, i, "evening")}
                                             input={<Input />}
                                         >
                                             <MenuItem value={""}>
                                                 <em>None</em>
                                             </MenuItem>
-                                            {shift.shifts.map((s, k) => {
+                                            {subShift.map((s, k) => {
                                                 return (
-                                                    // subShift[k].shifts[i].eveningCheckbox ?
-                                                    //     <MenuItem key={k} value={subShift[k].userId}>{subShift[k].userName}</MenuItem> : null
-
-                                                    subShift[k] ? subShift[k].shifts[i].eveningCheckbox ? <MenuItem key={k} value={subShift[k].userId}>{subShift[k].userName}</MenuItem> : null : null
-
-                                                    // s.eveningCheckbox ? <MenuItem key={k} value={shift.userId}>{shift.userName}</MenuItem> : null
+                                                    s.shifts[i].eveningCheckbox ? <MenuItem key={k} value={s.userId}>{s.userName}</MenuItem> : null
                                                 )
                                             })}
                                         </Select>
-                                    </FormControl> */}
+                                    </FormControl>
                                 </Paper>
                             )
                         }) : null}
