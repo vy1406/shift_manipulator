@@ -99,15 +99,6 @@ const ScheduleShifts = ({ apiUsers, apiSubmittedShifts, isLoading, error, state,
     const [scheduledShifts, setScheduledShifts] = useState({});
     const [age, setAge] = React.useState([]);
 
-    // console.log(state);
-    console.log("==========1==========");
-    console.log(subShift);
-    console.log("==========1==========");
-    console.log("==========2==========")
-    console.log(scheduledShifts);
-    console.log("==========2==========");
-    // console.log(apiSubmittedShifts);
-
 
     const wantedShift = (value) => {
         return value === true
@@ -117,12 +108,6 @@ const ScheduleShifts = ({ apiUsers, apiSubmittedShifts, isLoading, error, state,
         fetchSubmittedShifts()
         fetchScheduledShifts()
     }, [])
-    // console.log("==========5==========");
-    // console.log(apiSubmittedShifts);
-    // console.log("==========5==========");
-    // console.log("==========5.1==========");
-    // console.log(apiSubmittedShifts[apiSubmittedShifts.length - 1]);
-    // console.log("==========5.1==========");
 
     useEffect(() => {
         (async () => {
@@ -155,59 +140,6 @@ const ScheduleShifts = ({ apiUsers, apiSubmittedShifts, isLoading, error, state,
             setScheduledShifts(schedule)
             setSubShift(usersShifts)
 
-
-
-            // for (let submittedShift of apiSubmittedShifts) {
-            //     if (submittedShift.createDate === submittedShift.updateDate) {
-            //         // let userShiftLol = { userName: { ...apiUsers.find(user => user._id === shift.userId) }.username, userId: shift.userId, shifts: shift.shifts }
-            //         // lol.push(userShiftLol)
-            //         let shifts = []
-            //         for (let i = 0; i < submittedShift.shifts.length; i++) {
-            //             let shift = {
-            //                 date: submittedShift.shifts[i].date,
-            //                 morning: "",
-            //                 noon: "",
-            //                 evening: ""
-            //             }
-            //             shifts.push(shift)
-            //         }
-
-            //         schedule = {
-            //             adminId: submittedShift.shifts[0].adminId,
-            //             dateFrom: submittedShift.shifts[0].date,
-            //             dateTo: submittedShift.shifts[submittedShift.shifts.length - 1].date,
-            //             shifts: shifts
-            //         }
-            //         // console.log("==========3lol==========");
-            //         // console.log(lol);
-            //         // console.log("==========3lol==========");
-            //     }
-            // }
-            // console.log("==========4lol==========");
-            // console.log(lol);
-            // console.log("==========4lol==========");
-
-            // let shifts = []
-            // for (let i = 0; i < apiSubmittedShifts[0].shifts.length; i++) {
-            //     let shift = {
-            //         date: apiSubmittedShifts[0].shifts[i].date,
-            //         morning: "",
-            //         noon: "",
-            //         evening: ""
-            //     }
-            //     shifts.push(shift)
-            // }
-
-            // let schedule = {
-            //     adminId: apiSubmittedShifts[0].shifts[0].adminId,
-            //     dateFrom: apiSubmittedShifts[0].shifts[0].date,
-            //     dateTo: apiSubmittedShifts[0].shifts[apiSubmittedShifts[0].shifts.length - 1].date,
-            //     shifts: shifts
-            // }
-            // console.log("==========444==========");
-            // console.log(schedule);
-            // console.log("==========444==========");
-            // setScheduledShifts(schedule)
         })()
     }, [apiSubmittedShifts])
 
@@ -218,23 +150,11 @@ const ScheduleShifts = ({ apiUsers, apiSubmittedShifts, isLoading, error, state,
         setScheduledShifts(newScheduledShifts)
     };
 
-    // console.log(scheduledShifts);
-
-    // ADD UPDATE DATE WHEN SUBMITTING SHIFTS TO SCHEDULE
-    // ADD UPDATE DATE WHEN SUBMITTING SHIFTS TO SCHEDULE
-    // ADD UPDATE DATE WHEN SUBMITTING SHIFTS TO SCHEDULE
-    // ADD UPDATE DATE WHEN SUBMITTING SHIFTS TO SCHEDULE
-    // ADD UPDATE DATE WHEN SUBMITTING SHIFTS TO SCHEDULE
-    // ADD UPDATE DATE WHEN SUBMITTING SHIFTS TO SCHEDULE
-    // ADD UPDATE DATE WHEN SUBMITTING SHIFTS TO SCHEDULE
-    // ADD UPDATE DATE WHEN SUBMITTING SHIFTS TO SCHEDULE
-
-
     const submitScheduledShifts = () => {
         console.log("==========schedule---component==========");
         console.log(scheduledShifts);
         console.log("==========schedule---component==========");
-        addScheduledShifts(scheduledShifts)
+        // addScheduledShifts(scheduledShifts)
         setOpen(false);
     }
 
@@ -246,12 +166,6 @@ const ScheduleShifts = ({ apiUsers, apiSubmittedShifts, isLoading, error, state,
         setOpen(false);
     };
 
-    // console.log("==========3==========");
-    // console.log(apiUsers);
-    // console.log("==========3==========");
-    // console.log("==========4==========");
-    // console.log(apiSubmittedShifts);
-    // console.log("==========4==========");
 
     return (
         <div>
@@ -260,28 +174,18 @@ const ScheduleShifts = ({ apiUsers, apiSubmittedShifts, isLoading, error, state,
                 <DialogTitle>Fill the form</DialogTitle>
                 <DialogContent>
                     <form className={classes.container}>
-                        {/* {scheduledShifts.shifts ? console.log(scheduledShifts) : console.log("nope")} */}
                         {scheduledShifts.shifts ? scheduledShifts.shifts.map((shift, i) => {
-                            // console.log("==========3==========");
-                            // console.log(shift);
-                            // console.log(scheduledShifts);
-                            // console.log("==========3==========");
-                            // for ( let lol of shift.shifts) {
-                            //     console.log(lol);
-                            // }
                             return (
                                 <Paper key={i} className={classes.paper}>
                                     <FormLabel component="legend">{shift.date}</FormLabel>
                                     <FormControl variant="outlined" className={classes.formControl}>
                                         <InputLabel id="demo-dialog-select-label">Morning</InputLabel>
                                         <Select
-                                            // label="lol"
                                             className={classes.select}
                                             fullWidth
-                                            // multiple
                                             labelId="demo-simple-select-outlined-label"
                                             id="demo-simple-select-outlined"
-                                            // value={scheduledShifts.shifts[i].morning}
+                                            value={shift.morning}
                                             onChange={e => handleChange(e, i, "morning")}
                                             input={<Input />}
                                         >
@@ -289,18 +193,8 @@ const ScheduleShifts = ({ apiUsers, apiSubmittedShifts, isLoading, error, state,
                                                 <em>None</em>
                                             </MenuItem>
                                             {subShift.map((s, k) => {
-                                                for(let userShift of s.shifts) {
-                                                    console.log("==========3==========");
-                                                    userShift.morningCheckbox ? console.log(s.userName) : console.log("nope")
-                                                    // console.log(s.userName + userShift.date + userShift.morningCheckbox);
-                                                    // console.log(userShift);
-                                                    console.log("==========3==========");
-                                                }
                                                 return (
-                                                    // <MenuItem value={[subShift[k].userId, subShift[k].shifts[i].date, i, "morning"]}>{subShift[k].userName}</MenuItem> : null
-                                                    // <MenuItem name={subShift[k].userName} value={subShift[k].userId}>{subShift[k].userName}</MenuItem> : null
-                                                   <MenuItem key={k} value={subShift[k].userId}>{s.userName}</MenuItem>
-                                                    // s.morningCheckbox ? <MenuItem key={k} value={shift.userId}>{shift.userName}</MenuItem> : null
+                                                    s.shifts[i].morningCheckbox ? <MenuItem key={k} value={s.userId}>{s.userName}</MenuItem> : null
                                                 )
                                             })}
                                         </Select>
