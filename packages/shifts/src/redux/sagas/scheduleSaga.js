@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
-import { getScheduleApi } from '../../services/apiServices';
+import { getScheduleApi, postScheduledShiftsApi } from '../../services/apiServices';
 
 function* fetchSchedule(action) {
    try {
@@ -13,7 +13,7 @@ function* fetchSchedule(action) {
 function* addShiftsToSchedule(action) {
    try {
       yield call(postScheduledShiftsApi, action.payload);
-      // yield addRequestShift();
+      yield fetchSchedule();
    } catch (e) {
       yield put({type: 'ADD_SCHEDULE_FAILED', message: e.message});
    }

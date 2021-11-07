@@ -53,7 +53,7 @@ const ToolbarWithLoading = withStyles(styles, { name: 'Toolbar' })(
 
 const initialState = {
     loading: false,
-    currentDate: '2021-08-19',
+    currentDate: '2021-10-24',
     currentViewName: 'Week',
 };
 
@@ -143,8 +143,6 @@ const ScheduleComponent = ({ apiSchedule, apiUsers, isLoading, error, fetchUsers
             setSchedule(schedulerData)
         })()
     }, [apiSchedule])
-
-    // console.log(apiUsers);
 
     return (
         <Paper className={classes.root}>

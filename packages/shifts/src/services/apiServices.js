@@ -31,7 +31,7 @@ export function postScheduledShiftsApi(ScheduledShiftsToAdd) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(ScheduledShiftsToAdd)
     };
-    return fetch(scheduledShiftsApi, requestOptions).catch((error) => { throw error })
+    return fetch(scheduleApi, requestOptions).catch((error) => { throw error })
 }
 
 export function postReqShiftsApi(ReqShiftToAdd) {

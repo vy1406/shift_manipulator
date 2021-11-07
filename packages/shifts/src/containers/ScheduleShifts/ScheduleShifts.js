@@ -29,46 +29,6 @@ import {
     KeyboardDatePicker,
 } from '@material-ui/pickers';
 
-// const useStyles = makeStyles((theme) => ({
-//     root: {
-//         display: 'flex',
-//         justifyContent: 'center',
-//         flexWrap: 'wrap',
-//         listStyle: 'none',
-//         padding: theme.spacing(0.5),
-//         marginBottom: '20px',
-//     },
-//     chip: {
-//         margin: theme.spacing(0.5),
-//     },
-//     msgBtn: {
-//         padding: '28px',
-//         justifyContent: 'space-between',
-
-//     },
-//     textField: {
-//         marginTop: '18px',
-//         marginBottom: '15px',
-//     },
-//     formControl: {
-//         display: 'flex',
-//         justifyContent: 'space-around',
-//         flexWrap: 'wrap',
-//         listStyle: 'none',
-//         padding: theme.spacing(0.5),
-//         // marginTop: '5px',
-//         // marginBottom: '15px',
-//     },
-//     paper: {
-//         marginTop: '5px',
-//         marginBottom: '15px',
-//         // flex-direction: column
-//         // display: "flex",
-//         // flexWrap: "wrap",
-//         // justifyontent: "space-around",
-//     },
-// }));
-
 const useStyles = makeStyles((theme) => ({
     container: {
         display: 'flex',
@@ -81,14 +41,7 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         marginTop: '5px',
         marginBottom: '15px',
-        // flex-direction: column
-        // display: "flex",
-        // flexWrap: "wrap",
-        // justifyontent: "space-around",
     },
-    select: {
-        // width: 200,
-    }
 }));
 
 const ScheduleShifts = ({ apiUsers, apiSubmittedShifts, isLoading, error, state, fetchSubmittedShifts, putSubmittedShifts, fetchScheduledShifts, addScheduledShifts }) => {
