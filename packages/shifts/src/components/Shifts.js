@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from "react"
 import ScheduleComponent from '../containers/ScheduleComponent/ScheduleComponent';
 import NewRequestShifts from "../containers/NewRequestShifts/NewRequestShifts";
+import SubmittedShifts from "../containers/ScheduleShifts/ScheduleShifts";
 import { setLoggedUser } from '../redux/actions/shifts';
 import { connect } from "react-redux";
 
@@ -13,6 +14,7 @@ const Shifts = ( { loggedUser, setLoggedUser }) => {
     <Fragment >
       <ScheduleComponent />
       <NewRequestShifts />
+      <SubmittedShifts />
       {/* <Modals /> */}
     </Fragment>
   );

@@ -4,25 +4,34 @@ const reqShiftsApi = process.env.NODE_ENV == "production" ? `https://shift-publi
 const subShiftsApi = process.env.NODE_ENV == "production" ? `https://shift-publisher-nest.herokuapp.com/submitted-Shifts` : 'http://localhost:3000/submitted-Shifts';
 
 export function getUsersApi() {
-  return fetch(usersApi, {
-      method: 'GET',
-      headers: {
-          'Content-Type': 'application/json',
+    return fetch(usersApi, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
 
-      }
-  }).then(response => response.json())
-    .catch((error) => {throw error})
+        }
+    }).then(response => response.json())
+        .catch((error) => { throw error })
 }
 
 export function getScheduleApi() {
-  return fetch(scheduleApi, {
-      method: 'GET',
-      headers: {
-          'Content-Type': 'application/json',
+    return fetch(scheduleApi, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
 
-      }
-  }).then(response => response.json())
-    .catch((error) => {throw error})
+        }
+    }).then(response => response.json())
+        .catch((error) => { throw error })
+}
+
+export function postScheduledShiftsApi(ScheduledShiftsToAdd) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(ScheduledShiftsToAdd)
+    };
+    return fetch(scheduledShiftsApi, requestOptions).catch((error) => { throw error })
 }
 
 export function postReqShiftsApi(ReqShiftToAdd) {
@@ -32,4 +41,24 @@ export function postReqShiftsApi(ReqShiftToAdd) {
         body: JSON.stringify(ReqShiftToAdd)
     };
     return fetch(reqShiftsApi, requestOptions).catch((error) => { throw error })
+}
+
+export function getSubmittedShifts() {
+    return fetch(subShiftsApi, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+
+        }
+    }).then(response => response.json())
+        .catch((error) => { throw error })
+}
+
+export function updateSubmittedShiftsApi(subShiftToUpdate) {
+    const requestOptions = {
+        method: 'UPDATE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(subShiftToUpdate)
+    };
+    return fetch(subShiftsApi, requestOptions).catch((error) => { throw error })
 }

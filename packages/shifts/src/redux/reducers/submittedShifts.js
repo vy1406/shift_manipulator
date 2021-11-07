@@ -1,52 +1,46 @@
 import * as type from '../types';
 
 const initialState = {
-    schedule: [],
+    submittedShifts: [],
     loading: false,
     error: null,
-    loggedUser: {}
 }
 
-export default function schedule(state = initialState, action) {
+export default function submittedShifts(state = initialState, action) {
     switch (action.type) {
-        case type.GET_SCHEDULE_REQUESTED:
+        case type.GET_SUB_SHIFTS_REQUESTED:
             return {
                 ...state,
                 loading: true,
             }
-        case type.GET_SCHEDULE_SUCCESS:
+        case type.GET_SUB_SHIFTS_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                schedule: action.schedule
+                submittedShifts: action.submittedShifts
             }
-        case type.GET_SCHEDULE_FAILED:
+        case type.GET_SUB_SHIFTS_FAILED:
             return {
                 ...state,
                 loading: false,
                 error: action.message,
             }
-        case type.ADD_SCHEDULE_REQUESTED:
+        case type.UPDATE_SUB_SHIFTS_REQUESTED:
             return {
                 ...state,
                 loading: true,
             }
-        case type.ADD_SCHEDULE_SUCCESS:
+        case type.UPDATE_SUB_SHIFTS_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                schedule: action.schedule
+                submittedShifts: action.submittedShifts
             }
-        case type.ADD_SCHEDULE_FAILED:
+        case type.UPDATE_SUB_SHIFTS_FAILED:
             return {
                 ...state,
                 loading: false,
                 error: action.message,
-            }
-        case type.SET_LOGGED_USER:
-            return {
-                ...state,
-                loggedUser: action.loggedUser
             }
         default:
             return state

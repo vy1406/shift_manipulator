@@ -149,8 +149,8 @@ const NewRequestShifts = ({ apiUsers, state, isLoading, error, fetchUsers, addRe
         updateReqShift("recieversIds", handleRecievers)
     };
 
-    console.log(state);
-    console.log(dates);
+    // console.log(state);
+    // console.log(dates);
 
     return (
         <div>
