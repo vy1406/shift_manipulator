@@ -105,75 +105,25 @@ const TECH_LIST = [
 
 export default function Pricing() {
   const classes = useStyles();
- 
-  function moveDiv(divId) {
-    let max_width = window.innerWidth;
-    let max_height = window.innerHeight;
 
-    let directions = { left: 1, up: 2, right: 3, down: 4 }
-    let direction = getRandomDirection();
-    let distance = getRandomDistance();
+  function moveDiv(divId) {
+    let max_width = window.innerWidth - 150;
+    let max_height = window.innerHeight - 50;
 
     const target = document.getElementsByClassName("techList")[divId];
-    let target_pos = { top: 100, left: 100 }
 
-    let i = 0;
+    let render_rate = 1200;
 
-    let render_rate = 30;
-    let move_step = 2;
-
+    function makeNewPosition() {
+      let nh = Math.floor(Math.random() * max_height);
+      let nw = Math.floor(Math.random() * max_width);
+      return [nh, nw];
+    }
     setInterval(function () {
-      i++;
-      if (i > distance) {
-        distance = getRandomDistance();
-        direction = getRandomDirection();
-        i = 0;
-      }
-      move(target, direction, move_step)
+      let newq = makeNewPosition();
+      target.style.top = newq[0] + "px";
+      target.style.left = newq[1] + "px";
     }, render_rate)
-
-    function getRandomDistance() {
-      return Math.floor((Math.random() * 20) + 1) + 5;
-    }
-
-    function getRandomDirection() {
-      return Math.floor((Math.random() * 4) + 1);
-    }
-
-    function move(el, direction, step) {
-      switch (direction) {
-        case directions.left: {
-          if (target_pos.left < max_width) {
-            target_pos.left += step;
-            el.style.left = target_pos.left + "px";
-          }
-          break;
-        }
-        case directions.up: {
-          if (target_pos.top < max_height) {
-            target_pos.top += step;
-            el.style.top = target_pos.top + "px";
-          }
-          break;
-        }
-
-        case directions.right: {
-          if (target_pos.left > 0) {
-            target_pos.left -= step;
-            el.style.left = target_pos.left + "px";
-          }
-          break;
-        }
-
-        case directions.down: {
-          if (target_pos.top > 0) {
-            target_pos.top -= step;
-            el.style.top = target_pos.top + "px";
-          }
-          break;
-        }
-      }
-    }
   };
 
 
@@ -189,10 +139,10 @@ export default function Pricing() {
   return (
     <React.Fragment>
 
-      <div>
+      <div style={{ marginTop: "50px" }}>
         {TECH_LIST.map((img, i) => (
           <div >
-            <img className="techList" style={{ position: "fixed", height: "100px", top: "100px", left: "100px" }} key={img.id} src={img.img} />
+            <img className="techList" style={{ position: "fixed", height: "100px", top: "100px", left: "50px", transition: "all 2s" }} key={img.id} src={img.img} />
           </div>
         )
         )}
