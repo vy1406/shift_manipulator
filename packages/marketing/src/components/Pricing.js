@@ -105,44 +105,74 @@ const TECH_LIST = [
 
 export default function Pricing() {
   const classes = useStyles();
+  const [organize, setOrganize] = useState(false);
 
-  function moveDiv(divId) {
+  let interval;
+
+  function moveDiv() {
     let max_width = window.innerWidth - 150;
     let max_height = window.innerHeight - 50;
 
-    const target = document.getElementsByClassName("techList")[divId];
-
-    let render_rate = 1200;
-
-    function makeNewPosition() {
+    for (let i of TECH_LIST) {
+      const target = document.getElementsByClassName("techList")[i.id];
       let nh = Math.floor(Math.random() * max_height);
       let nw = Math.floor(Math.random() * max_width);
-      return [nh, nw];
+      target.style.top = nh + "px";
+      target.style.left = nw + "px";
+      console.log(nw);
     }
-    setInterval(function () {
-      let newq = makeNewPosition();
-      target.style.top = newq[0] + "px";
-      target.style.left = newq[1] + "px";
-    }, render_rate)
   };
 
 
 
   useEffect(() => {
-    for (let i of TECH_LIST) {
-      moveDiv(i.id);
-      // console.log(i);
-    }
-  })
+    (async () => {
+      if (!interval && !organize) {
+        interval = setInterval(moveDiv, 1500);
+      }
+    })()
+  }, [organize])
 
+
+  const container = {
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "auto",
+    alignContent: "start"
+  }
+  const organizedList = {
+    flex: "0 0 auto",
+    margin: "10px",
+    height: "100px",
+  }
+
+  const randomizedList = {
+    position: "fixed",
+    height: "100px",
+    top: "100px",
+    left: "50px",
+    transition: "all 1.5s"
+  }
+
+  const organizeTech = (o) => {
+    if (o) {
+      clearInterval(interval);
+      interval = null;
+      setOrganize(o);
+    } else {
+      setOrganize(o);
+    }
+  }
 
   return (
     <React.Fragment>
 
-      <div style={{ marginTop: "50px" }}>
+      <div className="container" style={organize ? container : null}>
         {TECH_LIST.map((img, i) => (
           <div >
-            <img className="techList" style={{ position: "fixed", height: "100px", top: "100px", left: "50px", transition: "all 2s" }} key={img.id} src={img.img} />
+            <img onClick={() => organizeTech(!organize)} className="techList" style={organize ? organizedList : randomizedList} key={img.id} src={img.img} />
           </div>
         )
         )}
