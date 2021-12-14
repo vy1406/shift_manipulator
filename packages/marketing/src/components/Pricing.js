@@ -144,7 +144,7 @@ export default function Pricing() {
   }
   const organizedList = {
     flex: "0 0 auto",
-    margin: "10px",
+    margin: "40px",
     height: "100px",
   }
 
@@ -171,8 +171,9 @@ export default function Pricing() {
 
       <div className="container" style={organize ? container : null}>
         {TECH_LIST.map((img, i) => (
-          <div >
-            <img onClick={() => organizeTech(!organize)} className="techList" style={organize ? organizedList : randomizedList} key={img.id} src={img.img} />
+          <div className="techList" style={organize ? organizedList : randomizedList}>
+            {/* <h2>{img.title}</h2> */}
+            <img onClick={() => organizeTech(!organize)}  style={{height : "100px"}} key={img.id} src={img.img} />
           </div>
         )
         )}
